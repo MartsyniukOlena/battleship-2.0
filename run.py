@@ -108,4 +108,23 @@ def play_game():
         row -= 1  # Reducing number to the desired index.
         column -= 1  # Reducing number to the desired index.
 
+
+        # Handling player's moves and checking for hits or misses
+        if player_board[row][column] == "-" or player_board[row][column] == "X":
+            print("\nYou have already made a move in this position. Try again.\n")
+            continue
+        elif (row, column) == computer_ship1 or (row, column) == computer_ship2 or (row, column) == computer_ship3:
+            print("\nBoom! You hit! A ship has exploded!\n")
+            player_board[row][column] = "X"
+            ships_left -= 1
+            if ships_left == 0:
+                print(f"Your ships left: {ships_left}")
+                print("Congratulations, you won!\n")
+                break
+        else:
+            print("\nYou missed!\n")
+            player_board[row][column] = "-"
+
+        print(f"Your ships left: {ships_left}")
+
 play_game()
