@@ -127,4 +127,20 @@ def play_game():
 
         print(f"Your ships left: {ships_left}")
 
+        # Computer's move
+        computer_row, computer_column = computer_move(used_computer_positions)
+        if computer_board[computer_row][computer_column] == "-" or computer_board[computer_row][computer_column] == "X":
+            continue
+        elif (computer_row, computer_column) == ship1 or (computer_row, computer_column) == ship2 or (computer_row, computer_column) == ship3:
+            print(f"\nThe computer hit the ship at {computer_row+1}, {computer_column+1}!\n")
+            computer_board[computer_row][computer_column] = "X"
+            computer_ships_left -= 1
+            if computer_ships_left == 0:
+                print(f"Computer's ships left: {computer_ships_left}")
+                print("The computer won!\n")
+                break
+        else:
+            print(f"\nThe computer missed at {computer_row+1}, {computer_column+1}!\n")
+            computer_board[computer_row][computer_column] = "-"
+
 play_game()
