@@ -58,6 +58,10 @@ def play_game():
     print("Missed ships are marked with '-', hit ships are marked with'X'")
     input("Press Enter to start the game...")
 
+    # Initializing sets to store used positions for player and computer ships
+    used_ship_positions = set()
+    used_computer_positions = set()
+
     # Placing player's ships randomly on the board
     ship1 = create_random_ship(used_ship_positions)
     ship2 = create_random_ship(used_ship_positions)
