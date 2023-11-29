@@ -86,4 +86,8 @@ def play_game():
                       ["O", "O", "O", "O", "O"],
                       ["O", "O", "O", "O", "O"]]
 
+    # Initializing ship counts for player and computer
+    ships_left = 3
+    computer_ships_left = 3
+
 play_game()
