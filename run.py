@@ -46,6 +46,12 @@ def computer_move(used_positions):
             return move
 
 
+def play_again():
+    """Asks the user if they want to play again."""
+    try_again = input("Do you want to play again? (Y)es or (N)o? >: ").lower()
+    return try_again == "y"
+
+
 def play_game():
     """
     Plays the battleship game.
@@ -150,4 +156,9 @@ def play_game():
 
     print("Thank you for playing, {}.".format(player_name))
 
-play_game()
+if __name__ == "__main__":
+    # Initiating the game and prompting the user to play again if desired
+    while True:
+        play_game()
+        if not play_again():
+            break
