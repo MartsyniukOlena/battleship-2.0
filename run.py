@@ -90,4 +90,22 @@ def play_game():
     ships_left = 3
     computer_ships_left = 3
 
+
+    while True:
+        try:
+            print_game_board(player_board, computer_board)
+            row = int(input("Enter a row 1 to 5: "))
+            column = int(input("Enter a column 1 to 5: "))
+        except ValueError:
+            print("Only enter numbers!")
+            continue
+
+        # Validating user input for row and column
+        if row not in range(1, 6) or column not in range(1, 6):
+            print("\nInvalid input. Please enter valid numbers.\nThe numbers must be between 1-5!\n")
+            continue
+
+        row -= 1  # Reducing number to the desired index.
+        column -= 1  # Reducing number to the desired index.
+
 play_game()
