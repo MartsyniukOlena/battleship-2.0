@@ -10,3 +10,25 @@ def clear_screen():
     Clears the terminal screen.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+
+clear_screen()
+
+def play_game():
+    """
+    Plays the battleship game.
+    """
+
+    # Creating game boards for the player and computer
+    player_board = [["O", "O", "O", "O", "O"],
+                    ["O", "O", "O", "O", "O"],
+                    ["O", "O", "O", "O", "O"],
+                    ["O", "O", "O", "O", "O"],
+                    ["O", "O", "O", "O", "O"]]
+
+    computer_board = [["O", "O", "O", "O", "O"],
+                      ["O", "O", "O", "O", "O"],
+                      ["O", "O", "O", "O", "O"],
+                      ["O", "O", "O", "O", "O"],
+                      ["O", "O", "O", "O", "O"]]
+
+play_game()
