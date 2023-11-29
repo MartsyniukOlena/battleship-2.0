@@ -34,12 +34,24 @@ def create_random_ship(used_positions):
             used_positions.add(ship_position)
             return ship_position
 
+
+def computer_move(used_positions):
+    """
+    Generates a random move for the computer.
+    """
+    while True:
+        move = (random.randint(0, 4), random.randint(0, 4))
+        if move not in used_positions:
+            used_positions.add(move)
+            return move
+
+
 def play_game():
     """
     Plays the battleship game.
     """
     clear_screen()
-    
+
     # Placing player's ships randomly on the board
     ship1 = create_random_ship(used_ship_positions)
     ship2 = create_random_ship(used_ship_positions)
