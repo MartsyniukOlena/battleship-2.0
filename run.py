@@ -51,6 +51,12 @@ def play_game():
     Plays the battleship game.
     """
     clear_screen()
+    print("Welcome to the BATTLESHIP GAME!")
+    player_name = input("Enter your name: ")
+    print(f"Greetings, {player_name}! Let's start the BATTLESHIP GAME!"
+          "\nSink all of the ships before the oponent sinks them.\n")
+    print("Missed ships are marked with '-', hit ships are marked with'X'")
+    input("Press Enter to start the game...")
 
     # Placing player's ships randomly on the board
     ship1 = create_random_ship(used_ship_positions)
