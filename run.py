@@ -143,4 +143,11 @@ def play_game():
             print(f"\nThe computer missed at {computer_row+1}, {computer_column+1}!\n")
             computer_board[computer_row][computer_column] = "-"
 
+    print_game_board(player_board, computer_board)
+
+    if ships_left == computer_ships_left:
+        print("It's a tie!")
+
+    print("Thank you for playing, {}.".format(player_name))
+
 play_game()
