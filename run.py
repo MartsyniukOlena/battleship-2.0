@@ -11,8 +11,6 @@ def clear_screen():
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
-clear_screen()
-
 
 def print_game_board(player_board, computer_board):
     """
@@ -24,10 +22,34 @@ def print_game_board(player_board, computer_board):
         print(f"{i} | {' '.join(player_row)}    |    {i} | {' '.join(computer_row)}")
 
 
+def create_random_ship(used_positions):
+    """
+    Creates a random ship position that is not used.
+    It keeps track of ship positions already generated on the game board,
+    and creates a random ship position that hasn't been used before.
+    """
+    while True:
+        ship_position = (random.randint(0, 4), random.randint(0, 4))
+        if ship_position not in used_positions:
+            used_positions.add(ship_position)
+            return ship_position
+
 def play_game():
     """
     Plays the battleship game.
     """
+    clear_screen()
+    
+    # Placing player's ships randomly on the board
+    ship1 = create_random_ship(used_ship_positions)
+    ship2 = create_random_ship(used_ship_positions)
+    ship3 = create_random_ship(used_ship_positions)
+
+    # Placing computer's ships randomly on the board
+    computer_ship1 = create_random_ship(used_computer_positions)
+    computer_ship2 = create_random_ship(used_computer_positions)
+    computer_ship3 = create_random_ship(used_computer_positions)
+
 
     # Creating game boards for the player and computer
     player_board = [["O", "O", "O", "O", "O"],
