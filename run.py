@@ -5,6 +5,7 @@
 import os
 import random
 
+
 def clear_screen():
     """
     Clears the terminal screen.
@@ -48,8 +49,13 @@ def computer_move(used_positions):
 
 def play_again():
     """Asks the user if they want to play again."""
-    try_again = input("Do you want to play again? (Y)es or (N)o?:\n").lower()
-    return try_again == "y"
+    while True:
+        try_again = input("Do you want to play again? (Y)es or (N)o?:\n").lower()
+        if try_again in ['y', 'n']:
+            return try_again == "y"
+        else:
+            print("Please enter 'Y' for Yes or 'N' for No.")
+
 
 
 def play_game():
