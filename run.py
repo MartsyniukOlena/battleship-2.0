@@ -4,6 +4,7 @@
 
 import os
 import random
+from colorama import Fore, Back, Style, init
 
 def clear_screen():
     """
@@ -59,10 +60,11 @@ def play_game():
     clear_screen()
     print("Welcome to the BATTLESHIP GAME!")
     player_name = input("Enter your name:\n")
+    print("--------------------------------------------------------------")
     print(f"Greetings, {player_name}! Let's start the BATTLESHIP GAME!"
           "\nSink all of the ships before the oponent sinks them.\n")
     print("Missed ships are marked with '-', hit ships are marked with'X'")
-    input("Press Enter to start the game...")
+    input("Press Enter to start the game...\n")
 
     # Initializing sets to store used positions for player and computer ships
     used_ship_positions = set()
@@ -100,7 +102,7 @@ def play_game():
     while True:
         try:
             print_game_board(player_board, computer_board)
-            row = int(input("Enter a row 1 to 5:\n"))
+            row = int(input("\nEnter a row 1 to 5:\n"))
             column = int(input("Enter a column 1 to 5:\n"))
         except ValueError:
             print("Only enter numbers!\n")
@@ -108,7 +110,7 @@ def play_game():
 
         # Validating user input for row and column
         if row not in range(1, 6) or column not in range(1, 6):
-            print("Invalid input. Please enter valid numbers.\nThe numbers must be between 1-5!")
+            print("Invalid input. Please enter valid numbers.\nThe numbers must be between 1-5!\n")
             continue
 
         row -= 1  # Reducing number to the desired index.
@@ -120,15 +122,16 @@ def play_game():
             print("You have already made a move in this position. Try again.\n")
             continue
         elif (row, column) == computer_ship1 or (row, column) == computer_ship2 or (row, column) == computer_ship3:
-            print("Boom! You hit! A ship has exploded!")
+            print("\nBoom! You hit! A ship has exploded!")
             player_board[row][column] = "X"
             ships_left -= 1
             if ships_left == 0:
                 print(f"Your ships left: {ships_left}")
+                print(f"Computer's ships left: {computer_ships_left}\n")
                 print("Congratulations, you won!\n")
                 break
         else:
-            print("\nYou missed!\n")
+            print("\nYou missed!")
             player_board[row][column] = "-"
 
         print(f"Your ships left: {ships_left}")
@@ -142,17 +145,18 @@ def play_game():
             computer_board[computer_row][computer_column] = "X"
             computer_ships_left -= 1
             if computer_ships_left == 0:
-                print(f"Computer's ships left: {computer_ships_left}")
+                print(f"Computer's ships left: {computer_ships_left}\n")
                 print("The computer won!\n")
                 break
         else:
-            print(f"\nThe computer missed at {computer_row+1}, {computer_column+1}!\n")
+            print(f"\nThe computer missed at {computer_row+1}, {computer_column+1}!")
+            print(f"Computer's ships left: {computer_ships_left}\n")
             computer_board[computer_row][computer_column] = "-"
 
-    print_game_board(player_board, computer_board)
+    if computer_ships_left == 0 and ships_left == 0:
+                print("It's a tie!")
 
-    if ships_left == computer_ships_left:
-        print("It's a tie!")
+    print_game_board(player_board, computer_board)
 
     print("Thank you for playing, {}.".format(player_name))
 
