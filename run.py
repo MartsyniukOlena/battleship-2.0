@@ -48,7 +48,7 @@ def computer_move(used_positions):
 
 def play_again():
     """Asks the user if they want to play again."""
-    try_again = input("Do you want to play again? (Y)es or (N)o? >: ").lower()
+    try_again = input("Do you want to play again? (Y)es or (N)o?:\n").lower()
     return try_again == "y"
 
 
@@ -58,7 +58,7 @@ def play_game():
     """
     clear_screen()
     print("Welcome to the BATTLESHIP GAME!")
-    player_name = input("Enter your name: ")
+    player_name = input("Enter your name:\n")
     print(f"Greetings, {player_name}! Let's start the BATTLESHIP GAME!"
           "\nSink all of the ships before the oponent sinks them.\n")
     print("Missed ships are marked with '-', hit ships are marked with'X'")
@@ -100,15 +100,15 @@ def play_game():
     while True:
         try:
             print_game_board(player_board, computer_board)
-            row = int(input("Enter a row 1 to 5: "))
-            column = int(input("Enter a column 1 to 5: "))
+            row = int(input("Enter a row 1 to 5:\n"))
+            column = int(input("Enter a column 1 to 5:\n"))
         except ValueError:
-            print("Only enter numbers!")
+            print("Only enter numbers!\n")
             continue
 
         # Validating user input for row and column
         if row not in range(1, 6) or column not in range(1, 6):
-            print("\nInvalid input. Please enter valid numbers.\nThe numbers must be between 1-5!\n")
+            print("Invalid input. Please enter valid numbers.\nThe numbers must be between 1-5!")
             continue
 
         row -= 1  # Reducing number to the desired index.
@@ -117,10 +117,10 @@ def play_game():
 
         # Handling player's moves and checking for hits or misses
         if player_board[row][column] == "-" or player_board[row][column] == "X":
-            print("\nYou have already made a move in this position. Try again.\n")
+            print("You have already made a move in this position. Try again.\n")
             continue
         elif (row, column) == computer_ship1 or (row, column) == computer_ship2 or (row, column) == computer_ship3:
-            print("\nBoom! You hit! A ship has exploded!\n")
+            print("Boom! You hit! A ship has exploded!")
             player_board[row][column] = "X"
             ships_left -= 1
             if ships_left == 0:
