@@ -56,7 +56,11 @@ def play_again():
         else:
             print("Please enter 'Y' for Yes or 'N' for No.")
 
-
+def press_enter_key():
+    """
+    Asks the user to press enter to continue.
+    """
+    input("Press Enter to continue...\n")
 
 def play_game():
     """
@@ -141,6 +145,7 @@ def play_game():
 
         print(f"Your ships left: {ships_left}")
 
+
         # Computer's move
         computer_row, computer_column = computer_move(used_computer_positions)
         if computer_board[computer_row][computer_column] == "-" or computer_board[computer_row][computer_column] == "X":
@@ -157,6 +162,8 @@ def play_game():
             print(f"\nThe computer missed at {computer_row+1}, {computer_column+1}!")
             print(f"Computer's ships left: {computer_ships_left}\n")
             computer_board[computer_row][computer_column] = "-"
+
+        press_enter_key()
 
     if computer_ships_left == 0 and ships_left == 0:
                 print("It's a tie!")
