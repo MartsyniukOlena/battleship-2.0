@@ -52,15 +52,10 @@ def play_again():
     while True:
         try_again = input("Do you want to play again? (Y)es or (N)o?:\n").lower()
         if try_again in ['y', 'n']:
-            return try_again == "y"
+            return try_again
         else:
             print("Please enter 'Y' for Yes or 'N' for No.")
 
-def press_enter_key():
-    """
-    Asks the user to press enter to continue.
-    """
-    input("Press Enter to continue...\n")
 
 def play_game():
     """
@@ -125,17 +120,15 @@ def play_game():
             print("\nBoom! You hit! A ship has exploded!")
             player_board[row][column] = "X"
             ships_left -= 1
+            print(f"Your ships left: {ships_left}")
             if ships_left == 0:
-                print(f"Your ships left: {ships_left}")
                 print(f"Computer's ships left: {computer_ships_left}\n")
                 print("Congratulations, you won!\n")
                 break
         else:
             print("\nYou missed!")
+            print(f"Your ships left: {ships_left}")
             player_board[row][column] = "-"
-
-        print(f"Your ships left: {ships_left}")
-
 
         # Computer's move
         computer_row, computer_column = computer_move(used_computer_positions)
@@ -145,22 +138,14 @@ def play_game():
             print(f"\nThe computer hit the ship at {computer_row+1}, {computer_column+1}!\n")
             computer_board[computer_row][computer_column] = "X"
             computer_ships_left -= 1
+            print(f"Computer's ships left: {computer_ships_left}\n")
             if computer_ships_left == 0:
-                print(f"Computer's ships left: {computer_ships_left}\n")
                 print("The computer won!\n")
                 break
         else:
             print(f"\nThe computer missed at {computer_row+1}, {computer_column+1}!")
             print(f"Computer's ships left: {computer_ships_left}\n")
             computer_board[computer_row][computer_column] = "-"
-
-        press_enter_key()
-
-    used_ship_positions.clear()
-    used_computer_positions.clear()
-
-    if computer_ships_left == 0 and ships_left == 0:
-                print("It's a tie!")
 
     print_game_board(player_board, computer_board)
     print("Thank you for playing, {}.".format(player_name))
