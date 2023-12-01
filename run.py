@@ -105,12 +105,14 @@ def play_game():
 
         # Validating user input for row and column
         if row not in range(1, 6) or column not in range(1, 6):
-            print("Invalid input. Please enter valid numbers.\nThe numbers must be between 1-5!\n")
+            if row not in range(1, 6):
+                print("Row input is out of range. Enter a number between 1 and 5.\n")
+            if column not in range(1, 6):
+                print("Column input is out of range. Enter a number between 1 and 5.\n")
             continue
 
         row -= 1  # Reducing number to the desired index.
         column -= 1  # Reducing number to the desired index.
-
 
         # Handling player's moves and checking for hits or misses
         if player_board[row][column] == "-" or player_board[row][column] == "X":
