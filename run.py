@@ -91,17 +91,8 @@ def play_game():
 
 
     # Creating game boards for the player and computer
-    player_board = [["O", "O", "O", "O", "O"],
-                    ["O", "O", "O", "O", "O"],
-                    ["O", "O", "O", "O", "O"],
-                    ["O", "O", "O", "O", "O"],
-                    ["O", "O", "O", "O", "O"]]
-
-    computer_board = [["O", "O", "O", "O", "O"],
-                      ["O", "O", "O", "O", "O"],
-                      ["O", "O", "O", "O", "O"],
-                      ["O", "O", "O", "O", "O"],
-                      ["O", "O", "O", "O", "O"]]
+    player_board = [["O" for _ in range(5)] for _ in range(5)]
+    computer_board = [["O" for _ in range(5)] for _ in range(5)]
 
     # Initializing ship counts for player and computer
     ships_left = 3
@@ -165,11 +156,13 @@ def play_game():
 
         press_enter_key()
 
+    used_ship_positions.clear()
+    used_computer_positions.clear()
+
     if computer_ships_left == 0 and ships_left == 0:
                 print("It's a tie!")
 
     print_game_board(player_board, computer_board)
-
     print("Thank you for playing, {}.".format(player_name))
 
 if __name__ == "__main__":
